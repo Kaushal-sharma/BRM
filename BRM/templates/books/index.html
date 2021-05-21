@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'own_css/bookstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body style="background-color: #f7f9fc;">
+    <div id="header">
+      <div class="sidebar" style="background-color: rgb(41, 48, 66);">
+        <a class="navbar-brand" style="font-size: 40px;"><i class="fa fa-book" aria-hidden='true'></i>BRM</a>
+        <a href="http://localhost:8000/books/home">Dashboard</a>
+        <a href="http://localhost:8000/books/view">ViewBooks</a>
+        <a href="http://localhost:8000/books/insert">AddBook</a>
+        <a href="http://localhost:8000/books/search">SearchBook</a>
+        <a href="http://localhost:8000/books/userlogout">Logout</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <div id="heading" class="pt-3">
+        <h1 class="display-4">Books Record Management</h1>
+        <h4 style="color:#495057;">Dashboard</h4>
+      <div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        {% for item in count %}
+        <div class="col-4 pt-5">
+          <div class="card" id="cards">
+            <h2 style="color:#495057;">{{item.title}}</h2>
+            <h6><span style="color:blue;">Total:</span>{{item}}</h6>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

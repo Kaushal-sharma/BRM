@@ -1,0 +1,61 @@
+body{
+  background-color: GREEN;
+}
+/*side bar css*/
+.sidebar{
+  width: 300px;
+  height: 100%;
+  overflow: auto;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(13, 110, 253);
+  position: fixed;
+}
+.sidebar a{
+  color: #ebf0f7;
+  text-decoration: none;
+  padding: 16px;
+  display: block;
+}
+.sidebar a:hover:not(.active){
+  color: white;
+}
+/*sidebar media query*/
+@media screen and (max-width: 700px){
+  .sidebar{
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a{
+    float: left;
+  }
+  #content{
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+
+/*content css*/
+#content{
+  margin-left: 300px;
+  padding: 1px 16px;
+}
+
+
+/* index.html table cards design*/
+#card-table{
+  width: 700px;
+}
+#cards{
+  box-shadow: 0 4px 6px 0 rgba(192,192,192, 0.2), 0 6px 20px 0 rgba(192,192,192, 0.19);
+  border:none;
+  width: 300px;
+  padding:15px;
+}

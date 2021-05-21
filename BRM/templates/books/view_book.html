@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Books</title>
+    <link rel="stylesheet" href="{% static 'own_css/bookstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body style="background-color: #f7f9fc;">
+    <div id="header">
+      <div class="sidebar">
+        <a href="http://localhost:8000/books/home">Dashboard</a>
+        <a href="http://localhost:8000/books/view">ViewBooks</a>
+        <a href="http://localhost:8000/books/insert">AddBook</a>
+        <a href="http://localhost:8000/books/search">SearchBook</a>
+        <a href="http://localhost:8000/books/userlogout">Logout</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <div id="heading" class="pt-3">
+        <h1 class="display-4">Books Record Management</h1>
+        <h4>View books</h4>
+      <div>
+    </div>
+     <input class="form-control" id="myinput" type="text" placeholder="Search..">
+    <div class="container pt-5">
+      <div class="row">
+        <div class="col">
+          <div class="col-9"><h5>Total books {{count_book}}</h5></div>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody class=" table table-responsive" id='mytable'>
+                {% for data in book_data %}
+                <tr>
+                  <td>{{data.title}}</td>
+                  <td>{{data.author}}</td>
+                  <td>{{data.publisher}}</td>
+                  <td>{{data.price}}</td>
+                  <td>
+                    <a href="http://localhost:8000/books/edit?bookid={{data.id}}"><i class="fa fa-pencil-square btn btn-primary" aria-hidden="true"></i></a>
+                    <a href="http://localhost:8000/books/delete?bookid={{data.id}}"><i class="fa fa-trash-o btn btn-danger" aria-hidden="true"></i></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        $("#myinput").on("keyup", function() {
+
+          var value = $(this).val().toLowerCase();
+
+          $("#mytable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

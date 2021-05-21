@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Books</title>
+    <link rel="stylesheet" href="{% static 'own_css/bookstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  </head>
+  <body style="background-color: #f7f9fc;">
+    <div id="header">
+      <div class="sidebar">
+        <a href="http://localhost:8000/books/home" class="active">Home</a>
+        <a href="http://localhost:8000/books/view">ViewBooks</a>
+        <a href="http://localhost:8000/books/insert">AddBook</a>
+        <a href="http://localhost:8000/books/search">SearchBook</a>
+        <a href="http://localhost:8000/books/userlogout">Logout</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <div id="heading" class="pt-3">
+        <h1 class="display-4">Books Record Management</h1>
+        <h4>Edit book</h4>
+      <div>
+    </div>
+
+    <div class="container pt-5">
+      <div class="row">
+        <div class="col-sm-6">
+          <form id="" action="http://localhost:8000/books/update/" method="post" class="form-group">
+            {% csrf_token %}
+            <!--It show value in python form whith id number-->
+            <input type="hidden" name="book_id" value="{{book.id}}">
+            <table>
+              {{form}}
+            </table>
+            <input type="submit" value="Update" class="btn btn-success">
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

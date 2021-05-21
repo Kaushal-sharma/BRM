@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="{% static 'own_css/bookstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  </head>
+  <body style="background-color: #f7f9fc;">
+    <div id="header">
+      <div class="sidebar">
+        <a href="http://localhost:8000/books/home">Dashboard</a>
+        <a href="http://localhost:8000/books/view">ViewBooks</a>
+        <a href="http://localhost:8000/books/insert">AddBook</a>
+        <a href="http://localhost:8000/books/search">SearchBook</a>
+        <a href="http://localhost:8000/books/userlogout">Logout</a>
+      </div>
+    </div>
+
+    <div id="content">
+      <div id="heading" class="pt-3">
+        <h1 class="display-4">Books Record Management</h1>
+        <h4>Search books</h4>
+      <div>
+    </div>
+
+    <div class="container pt-5">
+      <div class="row">
+        <div class="col">
+          <form class="" action="http://localhost:8000/books/searching/" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Search Book" class="btn btn-success">
+          </form><p></p>
+          <table class="table table-bordered">
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Publisher</th>
+              <th>Price</th>
+            </tr>
+
+              {% for book in books %}
+              <tr>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.publisher}}</td>
+                <td>{{book.price}}</td>
+              </tr>
+              {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
